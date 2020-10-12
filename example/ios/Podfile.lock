@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - triple_des (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - triple_des (from `.symlinks/plugins/triple_des/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  triple_des:
+    :path: ".symlinks/plugins/triple_des/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  triple_des: 69675814e1dbfc1c54af0b434c7725bb0cb0637d
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0.rc.1
