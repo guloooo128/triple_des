@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4ccc05e-9b16-4365-a8ae-7e531517efae" name="Default Changelist" comment="" />
+    <list default="true" id="b4ccc05e-9b16-4365-a8ae-7e531517efae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/triple_des/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/triple_des/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/triple_des/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/triple_des/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/triple_des.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/triple_des.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,6 +17,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1il9c1hDGt0BeuePs9OEGUXaQPr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -36,25 +43,26 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1878" height="148" key="GridCell.Tab.0.bottom" timestamp="1602492032250">
+    <state width="1878" height="148" key="GridCell.Tab.0.bottom" timestamp="1602498827329">
       <screen x="0" y="23" width="1920" height="992" />
     </state>
-    <state width="1878" height="148" key="GridCell.Tab.0.bottom/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602492032250" />
-    <state width="1878" height="148" key="GridCell.Tab.0.center" timestamp="1602492032249">
+    <state width="1878" height="148" key="GridCell.Tab.0.bottom/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602498827329" />
+    <state width="1878" height="148" key="GridCell.Tab.0.center" timestamp="1602498827328">
       <screen x="0" y="23" width="1920" height="992" />
     </state>
-    <state width="1878" height="148" key="GridCell.Tab.0.center/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602492032249" />
-    <state width="1878" height="148" key="GridCell.Tab.0.left" timestamp="1602492032249">
+    <state width="1878" height="148" key="GridCell.Tab.0.center/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602498827328" />
+    <state width="1878" height="148" key="GridCell.Tab.0.left" timestamp="1602498827328">
       <screen x="0" y="23" width="1920" height="992" />
     </state>
-    <state width="1878" height="148" key="GridCell.Tab.0.left/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602492032249" />
-    <state width="1878" height="148" key="GridCell.Tab.0.right" timestamp="1602492032249">
+    <state width="1878" height="148" key="GridCell.Tab.0.left/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602498827328" />
+    <state width="1878" height="148" key="GridCell.Tab.0.right" timestamp="1602498827329">
       <screen x="0" y="23" width="1920" height="992" />
     </state>
-    <state width="1878" height="148" key="GridCell.Tab.0.right/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602492032249" />
-    <state x="1261" y="351" key="com.intellij.ide.util.TipDialog" timestamp="1602471390991">
-      <screen x="0" y="23" width="1920" height="992" />
+    <state width="1878" height="148" key="GridCell.Tab.0.right/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602498827329" />
+    <state x="3181" y="372" key="com.intellij.ide.util.TipDialog" timestamp="1602571749863">
+      <screen x="1920" y="23" width="1920" height="1057" />
     </state>
     <state x="1261" y="351" key="com.intellij.ide.util.TipDialog/1920.23.1920.1057/0.23.1920.992@0.23.1920.992" timestamp="1602471390991" />
+    <state x="3181" y="372" key="com.intellij.ide.util.TipDialog/1920.23.1920.1057/0.23.1920.992@1920.23.1920.1057" timestamp="1602571749863" />
   </component>
 </project>

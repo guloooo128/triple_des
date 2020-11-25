@@ -45,19 +45,15 @@ public class SwiftTripleDesPlugin: NSObject, FlutterPlugin {
         }
     }
     
-    private func crypt(_ operation: CCOperation, data: Data, key: String, iv: String, options: [UInt32], result: FlutterResult) {
+    private func crypt(_ operation: CCOperation, data: Data, key: String, iv: String, options: [UInt32], result: @escaping FlutterResult) {
         if let resultData = data.crypt(
             operation: operation,
             key: key,
             iv: iv,
             options: options) {
             if operation == kCCEncrypt {
-                let text = resultData.base64EncodedString()
-                print(text)
                 result(resultData.base64EncodedString())
             } else {
-                let text = String(data: resultData, encoding: .utf8)
-                print(text)
                 result(String(data: resultData, encoding: .utf8))
             }
         } else {
@@ -71,42 +67,50 @@ private extension Data {
         
         var option: UInt32 = 0
         options.forEach{ option |= $0 }
-        
-        let dataInLength = self.count
-        let dataBytes = self.withUnsafeBytes{ $0.baseAddress }
-        
+ 
         guard let keyData = key.data(using: .utf8) else { return nil }
-        let keyLength = kCCKeySize3DES
-        let keyBytes = keyData.withUnsafeBytes{ $0.baseAddress }
-        
-        var dataOut = Data(count: dataInLength + kCCBlockSize3DES)
-        let dataOutLength = dataOut.count
-        guard let dataOutBytes = dataOut.withUnsafeMutableBytes({ $0.baseAddress }) else { return nil }
-        
+
         guard let ivData = iv.data(using: .utf8) else { return nil }
-        let ivBytes = ivData.withUnsafeBytes { $0.baseAddress }
+
+        let resultData = crypt(
+            operation: operation,
+            algorithm: CCAlgorithm(kCCAlgorithm3DES),
+            options: CCOptions(option),
+            key: keyData,
+            initializationVector: ivData,
+            dataIn: self)
         
-        var dataOutMoved: Int = 0
-        
-        let cryptStatus = CCCrypt(
-            operation, //mode/operation type (kCCEncrypt or kCCDecrypt)
-            CCAlgorithm(kCCAlgorithm3DES),  //Algorithm type
-            CCOptions(option),     //options
-            keyBytes,                //Key (using not less than 8 bits)
-            keyLength,
-            ivBytes,
-            dataBytes,                 //data to be encrypted/decrypted
-            dataInLength,           //length of data to be encrypted/decrypted
-            dataOutBytes,                //result of encryption/decryption
-            dataOutLength,       //length of expected result
-            &dataOutMoved)          //actual length of expected result
-        
-        if cryptStatus == kCCSuccess {
-            let result = Data(bytes: dataOutBytes, count: dataOutMoved)
-            return result
-        } else {
-            print("\(#function) error = \(cryptStatus)")
-            return nil
+        return resultData
+    }
+    
+    private func crypt(operation: UInt32, algorithm: UInt32, options: UInt32, key: Data, initializationVector: Data, dataIn: Data) -> Data? {
+        return key.withUnsafeBytes { keyUnsafeRawBufferPointer in
+            return dataIn.withUnsafeBytes { dataInUnsafeRawBufferPointer in
+                return initializationVector.withUnsafeBytes { ivUnsafeRawBufferPointer in
+                    // Give the data out some breathing room for PKCS7's padding.
+                    let dataOutSize: Int = dataIn.count + kCCBlockSize3DES
+                    let dataOut = UnsafeMutableRawPointer.allocate(byteCount: dataOutSize, alignment: 1)
+                    defer { dataOut.deallocate() }
+                    var dataOutMoved: Int = 0
+                    let status = CCCrypt(
+                        CCOperation(operation),
+                        CCAlgorithm(algorithm),
+                        CCOptions(options),
+                        keyUnsafeRawBufferPointer.baseAddress,
+                        size_t(kCCKeySize3DES),
+                        ivUnsafeRawBufferPointer.baseAddress,
+                        dataInUnsafeRawBufferPointer.baseAddress,
+                        dataIn.count,
+                        dataOut,
+                        dataOutSize,
+                        &dataOutMoved)
+                    if status == kCCSuccess {
+                        return Data(bytes: dataOut, count: dataOutMoved)
+                    } else {
+                        return nil
+                    }
+                }
+            }
         }
     }
 }
